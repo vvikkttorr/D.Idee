@@ -32,7 +32,7 @@ bot.on("ready", async () => {
 
     console.log(`${bot.user.username} is online!`)
 
-    bot.user.setActivity("zoek nog medewerkers", { type: "PLAYING" });
+    bot.user.setActivity("wilt idee zeggen van anderen", { type: "PLAYING" });
 
 });
 
