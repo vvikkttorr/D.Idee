@@ -32,13 +32,50 @@ bot.on("ready", async () => {
 
     console.log(`${bot.user.username} is online!`)
 
-    bot.user.setActivity("wil jouw idee zeggen", { type: "PLAYING" });
+    bot.user.setActivity("zoek nog medewerkers", { type: "PLAYING" });
 
 });
 
+// Geef role aan speler als ie joint
 
+bot.on("guildMemberAdd", member => {
 
+    var role = member.guild.roles.find("name", "Player");
 
+    if (!role) return;
+
+    member.addRole(role);
+
+})
+
+bot.on("guildMemberAdd", member => {
+   
+    const channel = member.guild.channels.find("name", "welkom");
+    if(!channel) console.log("Kan kanaal niet vinden");
+
+    var joinMessage = new discord.RichEmbed()
+     .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL)
+     .setDescription(`Hey ${member.user.username}, **Welkom in de server**, Ik wens je nog veel geluk`)
+     .setColor("#00ff00")
+     .setTimestamp()
+     .setFooter("Gebruiker gejoined");
+
+     channel.send(joinMessage);
+});
+
+bot.on("guildMemberRemove", member => {
+   
+    const channel = member.guild.channels.find("name", "welkom");
+    if(!channel) console.log("Kan kanaal niet vinden");
+
+    var joinMessage = new discord.RichEmbed()
+     .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL)
+     .setColor("#ff0000")
+     .setTimestamp()
+     .setFooter("Gebruiker geleaved");
+
+     channel.send(joinMessage);
+});
 
 
 bot.on("message", async message => {
