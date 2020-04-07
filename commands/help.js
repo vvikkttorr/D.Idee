@@ -40,6 +40,6 @@ var commandsList = [];
     });
 }
 module.exports.help = {
-    name: "hel",
+    name: "help",
     description: "Heb je een idee. Zet het dan hier en misschien passen we het toe."
 }    
